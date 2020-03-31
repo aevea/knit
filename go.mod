@@ -1,3 +1,3 @@
 module github.com/commitsar-app/merge-master
 
-go 1.13
+go 1.14
