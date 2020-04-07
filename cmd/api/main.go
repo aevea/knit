@@ -2,8 +2,18 @@ package main
 
 import (
 	"log"
+	"net/http"
+
+	"github.com/outillage/merge-master/api"
+	"github.com/outillage/merge-master/api/generated"
+	"github.com/pacedotdev/oto/otohttp"
 )
 
 func main() {
-	log.Println("hello world")
+	g := api.HealthcheckService{}
+	server := otohttp.NewServer()
+	generated.RegisterHealthcheck(server, g)
+	http.Handle("/v1/", server)
+	log.Println("Server starting on localhost:8080")
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
