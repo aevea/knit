@@ -12,3 +12,11 @@ go-mod-tidy:
 
 # Run all tests & linters in CI
 ci: test go-mod-tidy
+
+
+generate_oto:
+	oto \
+		-template ./vendor/oto/templates/server.go.plush \
+		-out ./api/generated/oto.gen.go \
+		-ignore Ignorer -pkg generated ./api/definitions
+	gofmt -w ./api/oto.gen.go ./api/oto.gen.go
