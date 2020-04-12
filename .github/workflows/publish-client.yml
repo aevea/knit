@@ -23,22 +23,11 @@ jobs:
         with:
           node-version: '12.x'
       - name: Install dependencies
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           export PATH=${PATH}:`go env GOPATH`/bin
           go install github.com/magefile/mage
           mage install
-      - name: Create oto files
-        run: |
-          oto-tools generate \
-          --package-name @outillage/merge-master \
-          --oto-template ./templates/oto/client.js.plush \
-          --oto-definitions ./api/definitions
-      - name: Publish oto Client
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          oto-tools publish-npm \
-          --token $GITHUB_TOKEN \
-          --registry github \
-          --owner outillage
+          mage publishclient
          
