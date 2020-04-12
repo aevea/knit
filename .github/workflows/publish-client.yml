@@ -1,0 +1,44 @@
+name: Publish Client
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+        - "v*"
+
+jobs:
+  go-test:
+    name: "Go Test"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Go
+        uses: actions/setup-go@v1
+        with:
+          go-version: 1.14.x
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Install dependencies
+        run: |
+          export PATH=${PATH}:`go env GOPATH`/bin
+          go install github.com/magefile/mage
+          mage install
+      - name: Create oto files
+        run: |
+          oto-tools generate \
+          --package-name @outillage/merge-master \
+          --oto-template ./templates/oto/client.js.plush \
+          --oto-definitions ./api/definitions
+      - name: Publish oto Client
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          oto-tools publish-npm \
+          --token $GITHUB_TOKEN \
+          --registry github \
+          --owner outillage
+         
