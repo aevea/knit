@@ -1,10 +1,21 @@
 # Contributing to Merge Master
 
 ## Table of Contents
+- [Requirements](#requirements)
 - [Commit style](#commit-style)
 - [API Service](#API-service)
 - [Tooling](#tooling)
+- [Troubleshooting](#troubleshooting)
 
+## Requirements
+
+- Go (check pinned version in go.mod)
+- [Mage](https://magefile.org/)
+
+**How to install Mage:**
+```
+go install github.com/magefile/mage
+```
 
 
 ## Commit style
@@ -28,8 +39,17 @@ For 3rd party tools such as `oto` we use the [go tools file approach](https://gi
 
 **Essentially boils down to this:**
 - add your tool as a dependency to `tools.go`
-- add `go install your/dependency/url` to the `Makefile install_deps command`
+- add the dependency to Install in `mage.go` and run `mage install`
 
 **Reasons**
 
 By using this approach we can version tools used in Merge master as a normal Go dependency.
+
+## Troubleshooting
+
+#### Can't find `mage`
+
+Make sure your PATH points to GOBIN:
+```
+export PATH=${PATH}:`go env GOPATH`/bin
+```
