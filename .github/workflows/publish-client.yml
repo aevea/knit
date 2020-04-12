@@ -8,8 +8,8 @@ on:
         - "v*"
 
 jobs:
-  go-test:
-    name: "Go Test"
+  publish:
+    name: "Publish Client"
     runs-on: ubuntu-latest
 
     steps:
