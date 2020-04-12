@@ -139,8 +139,8 @@ github.com/outillage/git/v2 v2.1.1 h1:XbSHehzONfsudGzIdrdN7Y/bKJCwdG8yJPMtScxQC9
 github.com/outillage/git/v2 v2.1.1/go.mod h1:74FJHxXWfjNpcs5GCo8AeWBuxHMBhEK5olXltWY16Wo=
 github.com/outillage/magefiles v0.0.0-20200412112700-370e8a81c3b2 h1:pjsS4PWIx0BXVick8QMBwo8qXqF8WuUMw2guLirrnhg=
 github.com/outillage/magefiles v0.0.0-20200412112700-370e8a81c3b2/go.mod h1:xLpyulCkyQku18M1ZFRpfonN/jXD5kjMSAYubbxwGa8=
-github.com/outillage/oto-tools v0.0.2 h1:Wz+t1pe/JJ0tYP47WVNq9pUkpTsTDY57CFA7mvaWbYk=
-github.com/outillage/oto-tools v0.0.2/go.mod h1:w3LahbGWlVIgHBPxf1Lw3ClIO1gEPWzFM5naELKTKGM=
+github.com/outillage/oto-tools v0.1.0 h1:6gOXP8fsJxleRRxUIZHCPfiVViWEB0/U5IIWhjsi8U0=
+github.com/outillage/oto-tools v0.1.0/go.mod h1:w3LahbGWlVIgHBPxf1Lw3ClIO1gEPWzFM5naELKTKGM=
 github.com/pacedotdev/oto v0.3.0 h1:ZtwT3ImKVan6mzXo8q1Tdyu7RzpB2DAhDzYjHQA+HeE=
 github.com/pacedotdev/oto v0.3.0/go.mod h1:xXHNx8B8cCNDdVE0Xgoe5aPkmAjpDlzu2+BvbVdQL5M=
 github.com/pacedotdev/oto/otohttp v0.3.0 h1:ZbykCnQ4JYaei8COdd42gQAvlhtZxnQqpptPx7Ncl+Y=
