@@ -3,6 +3,8 @@
 package main
 
 import (
+	"os"
+
 	"github.com/magefile/mage/mg"
 	"github.com/magefile/mage/sh"
 	"github.com/outillage/magefiles"
@@ -40,4 +42,19 @@ func (Build) Server() error {
 	args = append(args, "./api/definitions")
 
 	return sh.RunV("oto", args...)
+}
+
+func PublishClient() error {
+	err := sh.RunV("oto-tools", "generate",
+		"--package-name", "@outillage/merge-master",
+		"--oto-template", "./templates/oto/client.js.plush",
+		"--oto-definitions", "./api/definitions")
+
+	if err != nil {
+		return err
+	}
+
+	token := os.Getenv("GITHUB_TOKEN")
+
+	return sh.RunV("oto-tools", "publish-npm", "--token", token, "--registry", "github", "--owner", "outillage")
 }
