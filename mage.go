@@ -26,10 +26,10 @@ func GoModTidy() error {
 
 type Build mg.Namespace
 
-func (Build) Server() error{
+func (Build) Server() error {
 	var args []string
 
-	args = append(args, "-template", "./templates/server.go.plush")
+	args = append(args, "-template", "./templates/oto/server.go.plush")
 
 	args = append(args, "-out", "./api/generated/oto.gen.go")
 
