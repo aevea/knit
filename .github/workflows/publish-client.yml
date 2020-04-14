@@ -4,8 +4,10 @@ on:
   push:
     branches:
       - master
+    paths:
+      - /api/definitions/**
     tags:
-        - "v*"
+      - "v*"
 
 jobs:
   publish:
@@ -21,7 +23,7 @@ jobs:
         uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: "12.x"
       - name: Install dependencies
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -30,4 +32,3 @@ jobs:
           go install github.com/magefile/mage
           mage install
           mage publishclient
-         
