@@ -9,6 +9,14 @@ Merge Master is a tool to gamify Pull(Merge) Requests.
 
 This list can be expanded at any point.
 
+## Usage
+
+Running using https://gobinaries.com/
+
+```sh
+curl -sf https://gobinaries.com/outillage/merge-master/cli | sh
+```
+
 
 ## Contributing
 Please check [CONTRIBUTING](./CONTRIBUTING.md).
