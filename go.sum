@@ -1,8 +1,8 @@
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
-github.com/aevea/magefiles v0.0.0-20200423111506-41d44f7971ad h1:FM0/qFNad6a0hBDp5mhCOGxoxYXXU6Ix1DIK0bfz3LQ=
-github.com/aevea/magefiles v0.0.0-20200423111506-41d44f7971ad/go.mod h1:A6QMgBfrfxFBnrPug4AyrE/WNlneMJld3lf1I+5snt8=
+github.com/aevea/magefiles v0.0.0-20200424121010-0004d5a7a2fe h1:vQ3Ixsc+ONvCRhhRssVwY5/CnlLAhEkpG9F4TWLrC0k=
+github.com/aevea/magefiles v0.0.0-20200424121010-0004d5a7a2fe/go.mod h1:ItpR2y3OMV2cqY57fZv61b0EgZTauhyt5UkC3tq8eqc=
 github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7 h1:uSoVVbwJiQipAclBbw+8quDsfcvFjOpI5iCf4p/cqCs=
 github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7/go.mod h1:6zEj6s6u/ghQa61ZWa/C2Aw3RkjiTBOix7dkqa1VLIs=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
