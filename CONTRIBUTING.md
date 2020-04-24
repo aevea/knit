@@ -20,7 +20,7 @@ go install github.com/magefile/mage
 
 ## Commit style
 
-This project uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). This is automatically enforced by our tool [Commitsar](https://github.com/outillage/commitsar). Please make sure your commits follow this standard and are descriptive.
+This project uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). This is automatically enforced by our tool [Commitsar](https://github.com/aevea/commitsar). Please make sure your commits follow this standard and are descriptive.
 
 
 ## API Service

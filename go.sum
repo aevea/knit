@@ -1,6 +1,8 @@
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
+github.com/aevea/magefiles v0.0.0-20200423111506-41d44f7971ad h1:FM0/qFNad6a0hBDp5mhCOGxoxYXXU6Ix1DIK0bfz3LQ=
+github.com/aevea/magefiles v0.0.0-20200423111506-41d44f7971ad/go.mod h1:A6QMgBfrfxFBnrPug4AyrE/WNlneMJld3lf1I+5snt8=
 github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7 h1:uSoVVbwJiQipAclBbw+8quDsfcvFjOpI5iCf4p/cqCs=
 github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7/go.mod h1:6zEj6s6u/ghQa61ZWa/C2Aw3RkjiTBOix7dkqa1VLIs=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
@@ -137,8 +139,6 @@ github.com/onsi/gomega v1.7.0 h1:XPnZz8VVBHjVsy1vzJmRwIcSwiUO+JFfrv/xGiigmME=
 github.com/onsi/gomega v1.7.0/go.mod h1:ex+gbHU/CVuBBDIJjb2X0qEXbFg53c61hWP/1CpauHY=
 github.com/outillage/git/v2 v2.1.1 h1:XbSHehzONfsudGzIdrdN7Y/bKJCwdG8yJPMtScxQC98=
 github.com/outillage/git/v2 v2.1.1/go.mod h1:74FJHxXWfjNpcs5GCo8AeWBuxHMBhEK5olXltWY16Wo=
-github.com/outillage/magefiles v0.0.0-20200412112700-370e8a81c3b2 h1:pjsS4PWIx0BXVick8QMBwo8qXqF8WuUMw2guLirrnhg=
-github.com/outillage/magefiles v0.0.0-20200412112700-370e8a81c3b2/go.mod h1:xLpyulCkyQku18M1ZFRpfonN/jXD5kjMSAYubbxwGa8=
 github.com/outillage/oto-tools v0.1.0 h1:6gOXP8fsJxleRRxUIZHCPfiVViWEB0/U5IIWhjsi8U0=
 github.com/outillage/oto-tools v0.1.0/go.mod h1:w3LahbGWlVIgHBPxf1Lw3ClIO1gEPWzFM5naELKTKGM=
 github.com/pacedotdev/oto v0.3.0 h1:ZtwT3ImKVan6mzXo8q1Tdyu7RzpB2DAhDzYjHQA+HeE=
