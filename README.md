@@ -14,7 +14,7 @@ This list can be expanded at any point.
 Running using https://gobinaries.com/
 
 ```sh
-curl -sf https://gobinaries.com/outillage/merge-master/cli | sh
+curl -sf https://gobinaries.com/aevea/merge-master/cli | sh
 ```
 
 

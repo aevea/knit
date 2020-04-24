@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/outillage/merge-master/api"
-	"github.com/outillage/merge-master/api/generated"
+	"github.com/aevea/merge-master/api"
+	"github.com/aevea/merge-master/api/generated"
 	"github.com/pacedotdev/oto/otohttp"
 )
 

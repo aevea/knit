@@ -5,9 +5,9 @@ package main
 import (
 	"os"
 
+	"github.com/aevea/magefiles"
 	"github.com/magefile/mage/mg"
 	"github.com/magefile/mage/sh"
-	"github.com/outillage/magefiles"
 )
 
 func Install() error {
