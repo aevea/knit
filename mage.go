@@ -12,7 +12,7 @@ import (
 
 func Install() error {
 	dependencies := []string{
-		"github.com/outillage/oto-tools",
+		"github.com/aevea/oto-tools",
 		"github.com/pacedotdev/oto",
 	}
 	return magefiles.Install(dependencies)
@@ -46,7 +46,7 @@ func (Build) Server() error {
 
 func PublishClient() error {
 	err := sh.RunV("oto-tools", "generate",
-		"--package-name", "@outillage/merge-master",
+		"--package-name", "@aevea/merge-master",
 		"--oto-template", "./templates/oto/client.js.plush",
 		"--oto-definitions", "./api/definitions")
 
@@ -56,5 +56,5 @@ func PublishClient() error {
 
 	token := os.Getenv("GITHUB_TOKEN")
 
-	return sh.RunV("oto-tools", "publish-npm", "--token", token, "--registry", "github", "--owner", "outillage")
+	return sh.RunV("oto-tools", "publish-npm", "--token", token, "--registry", "github", "--owner", "aevea")
 }
