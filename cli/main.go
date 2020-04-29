@@ -5,12 +5,14 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"sort"
 	"strings"
 
 	"golang.org/x/oauth2"
 
 	"github.com/aevea/merge-master/internal/github"
 	"github.com/jedib0t/go-pretty/table"
+	"github.com/montanaflynn/stats"
 	"github.com/spf13/cobra"
 )
 
@@ -33,6 +35,7 @@ func main() {
 		RunE: func(cmd *cobra.Command, args []string) error {
 			repository := cmd.Flag("repository").Value.String()
 			token := cmd.Flag("token").Value.String()
+			noLimit := cmd.Flag("no-limit").Value.String() == "true"
 
 			if repository == "" {
 				return errors.New("missing repository")
@@ -67,6 +70,60 @@ func main() {
 				},
 			)
 
+			mergedPrs, err := githubClient.MergedPRs(noLimit)
+
+			if err != nil {
+				return err
+			}
+
+			var durations []float64
+
+			for _, pr := range mergedPrs {
+				durations = append(durations, pr.MergedAfter.Minutes())
+			}
+
+			sort.Float64s(durations)
+
+			mean, err := stats.Mean(durations)
+
+			if err != nil {
+				return err
+			}
+
+			t.AppendRow(
+				table.Row{
+					fmt.Sprintf("Mean time to Merge (Last %d PRs)", len(durations)),
+					fmt.Sprintf("%.0f hours", mean/60),
+				},
+			)
+
+			median, err := stats.Median(durations)
+
+			if err != nil {
+				return err
+			}
+
+			t.AppendRow(
+				table.Row{
+					fmt.Sprintf("Median time to Merge (Last %d PRs)", len(durations)),
+					fmt.Sprintf("%.0f hours", median/60),
+				},
+			)
+
+			t.AppendRow(
+				table.Row{
+					fmt.Sprintf("Slowest time to Merge (Last %d PRs)", len(durations)),
+					fmt.Sprintf("%.0f hours", durations[len(durations)-1]/60),
+				},
+			)
+
+			t.AppendRow(
+				table.Row{
+					fmt.Sprintf("Fastest time to Merge (Last %d PRs)", len(durations)),
+					fmt.Sprintf("%.2f minutes", durations[0]),
+				},
+			)
+
 			fmt.Println(t.Render())
 
 			return nil
@@ -77,6 +134,7 @@ func main() {
 
 	oldestPRCmd.PersistentFlags().String("repository", "", "repository in the format of owner/repository")
 	oldestPRCmd.PersistentFlags().String("token", "", "token for github API")
+	oldestPRCmd.PersistentFlags().Bool("no-limit", false, "merge master will iterrate through all available PRs")
 
 	rootCmd.AddCommand(oldestPRCmd)
 
