@@ -15,6 +15,7 @@ func (client *Client) MergedPRs(noLimit bool) ([]PR, error) {
 		"repositoryOwner": githubv4.String(client.Owner),
 		"repositoryName":  githubv4.String(client.Repository),
 		"prCursor":        (*githubv4.String)(nil),
+		"baseRefName":     githubv4.String("master"),
 	}
 
 	var prs []PR
@@ -32,6 +33,13 @@ func (client *Client) MergedPRs(noLimit bool) ([]PR, error) {
 
 		for _, pr := range mergedPRQuery.Repository.PullRequests.Nodes {
 			merged := pr.MergedAt.Sub(pr.CreatedAt)
+
+			if len(pr.Reviews.Nodes) > 0 {
+				mergedAfterApproved := pr.MergedAt.Sub(pr.Reviews.Nodes[0].CreatedAt)
+
+				prs = append(prs, PR{Title: pr.Title, MergedAfter: merged, URL: pr.URL, MergedAfterApprove: mergedAfterApproved})
+				continue
+			}
 
 			prs = append(prs, PR{Title: pr.Title, MergedAfter: merged, URL: pr.URL})
 		}
