@@ -1,7 +1,9 @@
 package github
 
 import (
+	"fmt"
 	"net/http"
+	"strings"
 
 	"github.com/shurcooL/githubv4"
 )
@@ -14,8 +16,16 @@ type Client struct {
 }
 
 // NewGithubClient creates a new githubClient based on the HTTPClient provided
-func NewGithubClient(HTTPClient *http.Client, owner string, repository string) *Client {
+func NewGithubClient(HTTPClient *http.Client, repository string) (*Client, error) {
+	repoName := strings.Split(repository, "/")
+
+	if len(repoName) != 2 {
+		return nil, fmt.Errorf("expected repository format of owner/repository, but received %s", repository)
+	}
+
+	owner := repoName[0]
+	repo := repoName[1]
 	client := githubv4.NewClient(HTTPClient)
 
-	return &Client{GHClient: client, Owner: owner, Repository: repository}
+	return &Client{GHClient: client, Owner: owner, Repository: repo}, nil
 }
