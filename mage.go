@@ -44,6 +44,26 @@ func (Build) Server() error {
 	return sh.RunV("oto", args...)
 }
 
+func (Build) Client() error {
+	var args []string
+
+	args = append(args, "-template", "./templates/oto/client.js.plush")
+
+	args = append(args, "-out", "./webapp/src/services/client.js")
+
+	args = append(args, "-ignore", "Ignorer")
+
+	args = append(args, "./api/definitions")
+
+	return sh.RunV("oto", args...)
+}
+
+type WebApp mg.Namespace
+
+func (WebApp) Dev() error {
+	return sh.RunV("npm", "run", "--prefix", "./webapp", "dev")
+}
+
 func PublishClient() error {
 	err := sh.RunV("oto-tools", "generate",
 		"--package-name", "@aevea/merge-master",
