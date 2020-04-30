@@ -35,6 +35,10 @@ func main() {
 	generated.RegisterHealthcheck(server, g)
 	generated.RegisterPullRequestService(server, pullRequestService)
 	http.Handle("/oto/", server)
+
+	fs := http.FileServer(http.Dir("./webapp/public"))
+	http.Handle("/", fs)
+
 	log.Println("Server starting on localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
