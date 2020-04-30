@@ -5,14 +5,14 @@
 <%= for (service) in def.Services { %> 
 export class <%= service.Name %> {
 	<%= for (method) in service.Methods { %>
-	async <%= camelize_down(method.Name) %>(<%= camelize_down(method.InputObject.TypeName) %>) {
+	async <%= camelize_down(method.Name) %>(url, <%= camelize_down(method.InputObject.TypeName) %>) {
 		const headers = {
 			'Accept':		'application/json',
 			'Accept-Encoding':	'gzip',
 			'Content-Type':		'application/json',
 		}
 		<%= camelize_down(method.InputObject.TypeName) %> = <%= camelize_down(method.InputObject.TypeName) %> || {}
-		const response = await fetch('/oto/<%= service.Name %>.<%= method.Name %>', {
+		const response = await fetch(`${url}/oto/<%= service.Name %>.<%= method.Name %>`, {
 			method: 'POST',
 			headers: headers,
 			body: JSON.stringify(<%= camelize_down(method.InputObject.TypeName) %>)
