@@ -17,6 +17,11 @@ type Healthcheck interface {
 	Check(context.Context, HealthcheckRequest) (*HealthcheckResponse, error)
 }
 
+type PullRequestService interface {
+
+	Oldest(context.Context, OldestRequest) (*OldestResponse, error)
+}
+
 
 
 type healthcheckServer struct {
@@ -51,6 +56,38 @@ func (s *healthcheckServer) handleCheck(w http.ResponseWriter, r *http.Request) 
 }
 
 
+type pullRequestServiceServer struct {
+	server *otohttp.Server
+	pullRequestService PullRequestService
+}
+
+func RegisterPullRequestService(server *otohttp.Server, pullRequestService PullRequestService) {
+	handler := &pullRequestServiceServer{
+		server: server,
+		pullRequestService: pullRequestService,
+	}
+	server.Register("PullRequestService", "Oldest", handler.handleOldest)
+	}
+
+func (s *pullRequestServiceServer) handleOldest(w http.ResponseWriter, r *http.Request) {
+	var request OldestRequest
+	if err := otohttp.Decode(r, &request); err != nil {
+		s.server.OnErr(w, r, err)
+		return
+	}
+	response, err := s.pullRequestService.Oldest(r.Context(), request)
+	if err != nil {
+		log.Println("TODO: oto service error:", err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	if err := otohttp.Encode(w, r, http.StatusOK, response); err != nil {
+		s.server.OnErr(w, r, err)
+		return
+	}
+}
+
+
 
 
 type HealthcheckRequest struct {
@@ -59,6 +96,19 @@ type HealthcheckRequest struct {
 
 type HealthcheckResponse struct {
 	Ok string `json:"ok"`
+Error string `json:"error,omitempty"`
+
+}
+
+type OldestRequest struct {
+	Repository string `json:"repository"`
+
+}
+
+type OldestResponse struct {
+	Title string `json:"title"`
+URL string `json:"uRL"`
+OpenForDays int64 `json:"openForDays"`
 Error string `json:"error,omitempty"`
 
 }

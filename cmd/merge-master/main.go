@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"os"
 	"sort"
-	"strings"
 
 	"golang.org/x/oauth2"
 
@@ -50,9 +49,11 @@ func main() {
 			)
 			httpClient := oauth2.NewClient(context.Background(), src)
 
-			repoName := strings.Split(repository, "/")
+			githubClient, err := github.NewGithubClient(httpClient, repository)
 
-			githubClient := github.NewGithubClient(httpClient, repoName[0], repoName[1])
+			if err != nil {
+				return err
+			}
 
 			oldestPR, err := githubClient.OldestPR()
 
