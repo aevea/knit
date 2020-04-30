@@ -4,8 +4,9 @@ import "time"
 
 // PR is an internal struct presenting the information we care about in a PR
 type PR struct {
-	Title       string
-	URL         string
-	OpenFor     time.Duration
-	MergedAfter time.Duration
+	Title              string
+	URL                string
+	OpenFor            time.Duration
+	MergedAfter        time.Duration
+	MergedAfterApprove time.Duration
 }

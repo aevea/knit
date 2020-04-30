@@ -78,8 +78,15 @@ func main() {
 
 			var durations []float64
 
+			var mergedAfterApproveDurations []float64
+
 			for _, pr := range mergedPrs {
 				durations = append(durations, pr.MergedAfter.Minutes())
+
+				// Review-less PRs should not be included in review times
+				if pr.MergedAfterApprove.Seconds() != 0 {
+					mergedAfterApproveDurations = append(mergedAfterApproveDurations, pr.MergedAfterApprove.Minutes())
+				}
 			}
 
 			sort.Float64s(durations)
@@ -121,6 +128,19 @@ func main() {
 				table.Row{
 					fmt.Sprintf("Fastest time to Merge (Last %d PRs)", len(durations)),
 					fmt.Sprintf("%.2f minutes", durations[0]),
+				},
+			)
+
+			mergedAfterReviewMedian, err := stats.Mean(mergedAfterApproveDurations)
+
+			if err != nil {
+				return err
+			}
+
+			t.AppendRow(
+				table.Row{
+					fmt.Sprintf("Median time to Merge After approval (Last %d PRs)", len(durations)),
+					fmt.Sprintf("%.2f minutes", mergedAfterReviewMedian),
 				},
 			)
 
