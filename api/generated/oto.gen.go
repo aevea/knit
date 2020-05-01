@@ -108,7 +108,7 @@ type OldestRequest struct {
 type OldestResponse struct {
 	Title string `json:"title"`
 URL string `json:"uRL"`
-OpenForDays int64 `json:"openForDays"`
+OpenForDays string `json:"openForDays"`
 Error string `json:"error,omitempty"`
 
 }

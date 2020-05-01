@@ -11,5 +11,5 @@ type OldestRequest struct {
 type OldestResponse struct {
 	Title       string
 	URL         string
-	OpenForDays int64
+	OpenForDays string
 }
