@@ -2,6 +2,7 @@ package api
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 
 	"github.com/aevea/merge-master/api/generated"
@@ -25,5 +26,5 @@ func (service PullRequestService) Oldest(ctx context.Context, request generated.
 		return nil, err
 	}
 
-	return &generated.OldestResponse{OpenForDays: oldestPR.OpenFor.Milliseconds(), Title: oldestPR.Title, URL: oldestPR.URL}, nil
+	return &generated.OldestResponse{OpenForDays: fmt.Sprintf("%.0f", oldestPR.OpenFor.Hours()/12), Title: oldestPR.Title, URL: oldestPR.URL}, nil
 }
