@@ -2,11 +2,11 @@ package api
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 
 	"github.com/aevea/merge-master/api/generated"
 	"github.com/aevea/merge-master/internal/github"
+	"github.com/hako/durafmt"
 )
 
 type PullRequestService struct {
@@ -26,5 +26,5 @@ func (service PullRequestService) Oldest(ctx context.Context, request generated.
 		return nil, err
 	}
 
-	return &generated.OldestResponse{OpenForDays: fmt.Sprintf("%.0f", oldestPR.OpenFor.Hours()/12), Title: oldestPR.Title, URL: oldestPR.URL}, nil
+	return &generated.OldestResponse{OpenFor: durafmt.Parse(oldestPR.OpenFor).LimitFirstN(2).String(), Title: oldestPR.Title, URL: oldestPR.URL}, nil
 }
