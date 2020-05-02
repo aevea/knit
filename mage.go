@@ -64,6 +64,10 @@ func (WebApp) Dev() error {
 	return sh.RunV("npm", "run", "--prefix", "./webapp", "dev")
 }
 
+func (WebApp) Install() error {
+	return sh.RunV("npm", "install", "--prefix", "./webapp")
+}
+
 func PublishClient() error {
 	err := sh.RunV("oto-tools", "generate",
 		"--package-name", "@aevea/merge-master",
