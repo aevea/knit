@@ -9,7 +9,7 @@ type OldestRequest struct {
 }
 
 type OldestResponse struct {
-	Title       string
-	URL         string
-	OpenForDays string
+	Title   string
+	URL     string
+	OpenFor string
 }

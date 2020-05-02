@@ -7,10 +7,8 @@
 
   async function getOldestPR() {
     let data = await prService.oldest("", {
-      Repository: "fallion/fallion"
+      Repository: "productboard/pb-frontend"
     });
-
-    console.log(data);
 
     return data;
   }
@@ -43,7 +41,7 @@
   {:then data}
     <a href={data.uRL} target="_blank">{data.title}</a>
 
-    <h3>Open for {data.openForDays} days</h3>
+    <h3>Open for {data.openFor}</h3>
 
   {:catch error}
     <p>Something went wrong: {error.message}</p>
