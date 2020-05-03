@@ -3,7 +3,7 @@ package api
 import (
 	"context"
 
-	"github.com/aevea/merge-master/api/generated"
+	"github.com/aevea/knit/api/generated"
 )
 
 type HealthcheckService struct{}

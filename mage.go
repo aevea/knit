@@ -70,7 +70,7 @@ func (WebApp) Install() error {
 
 func PublishClient() error {
 	err := sh.RunV("oto-tools", "generate",
-		"--package-name", "@aevea/merge-master",
+		"--package-name", "@aevea/knit",
 		"--oto-template", "./templates/oto/client.js.plush",
 		"--oto-definitions", "./api/definitions")
 

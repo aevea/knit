@@ -5,9 +5,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/aevea/merge-master/api"
-	"github.com/aevea/merge-master/api/generated"
-	cfg "github.com/aevea/merge-master/internal/config"
+	"github.com/aevea/knit/api"
+	"github.com/aevea/knit/api/generated"
+	cfg "github.com/aevea/knit/internal/config"
 	"github.com/pacedotdev/oto/otohttp"
 	"github.com/spf13/viper"
 	"golang.org/x/oauth2"
