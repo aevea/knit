@@ -9,7 +9,7 @@ import (
 
 	"golang.org/x/oauth2"
 
-	"github.com/aevea/merge-master/internal/github"
+	"github.com/aevea/knit/internal/github"
 	"github.com/jedib0t/go-pretty/table"
 	"github.com/montanaflynn/stats"
 	"github.com/spf13/cobra"
@@ -17,11 +17,11 @@ import (
 
 func main() {
 	rootCmd := &cobra.Command{
-		Use:   "merge-master",
+		Use:   "knit",
 		Short: "TODO",
 		Long:  "TODO",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			fmt.Print("There is no root command. Please check merge-master --help.")
+			fmt.Print("There is no root command. Please check knit --help.")
 			return nil
 		},
 		SilenceUsage:  true,

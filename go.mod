@@ -1,4 +1,4 @@
-module github.com/aevea/merge-master
+module github.com/aevea/knit
 
 go 1.14
 

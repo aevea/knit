@@ -4,8 +4,8 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/aevea/merge-master/api/generated"
-	"github.com/aevea/merge-master/internal/github"
+	"github.com/aevea/knit/api/generated"
+	"github.com/aevea/knit/internal/github"
 	"github.com/hako/durafmt"
 )
 
