@@ -1,4 +1,4 @@
-# Contributing to Merge Master
+# Contributing to knit
 
 ## Table of Contents
 - [Requirements](#requirements)
@@ -43,7 +43,7 @@ For 3rd party tools such as `oto` we use the [go tools file approach](https://gi
 
 **Reasons**
 
-By using this approach we can version tools used in Merge master as a normal Go dependency.
+By using this approach we can version tools used in knit as a normal Go dependency.
 
 ## Troubleshooting
 
