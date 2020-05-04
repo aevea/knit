@@ -155,7 +155,7 @@ func main() {
 
 	oldestPRCmd.PersistentFlags().String("repository", "", "repository in the format of owner/repository")
 	oldestPRCmd.PersistentFlags().String("token", "", "token for github API")
-	oldestPRCmd.PersistentFlags().Bool("no-limit", false, "merge master will iterrate through all available PRs")
+	oldestPRCmd.PersistentFlags().Bool("no-limit", false, "knit will iterrate through all available PRs")
 
 	rootCmd.AddCommand(oldestPRCmd)
 
