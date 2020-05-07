@@ -5,6 +5,10 @@
 <%= for (service) in def.Services { %> 
 export class <%= service.Name %> {
 	<%= for (method) in service.Methods { %>
+	/**
+	* @param {string} url URL of kite backend. Can be left blank.
+	* @param <%= camelize_down(method.InputObject.TypeName) %> <%= method.InputObject.TypeID %>
+	*/
 	async <%= camelize_down(method.Name) %>(url, <%= camelize_down(method.InputObject.TypeName) %>) {
 		const headers = {
 			'Accept':		'application/json',

@@ -5,6 +5,10 @@
  
 export class Healthcheck {
 	
+	/**
+	* @param {string} url URL of kite backend. Can be left blank.
+	* @param healthcheckRequest github.com/aevea/knit/api/definitions.HealthcheckRequest
+	*/
 	async check(url, healthcheckRequest) {
 		const headers = {
 			'Accept':		'application/json',
@@ -29,6 +33,10 @@ export class Healthcheck {
  
 export class PullRequestService {
 	
+	/**
+	* @param {string} url URL of kite backend. Can be left blank.
+	* @param oldestRequest github.com/aevea/knit/api/definitions.OldestRequest
+	*/
 	async oldest(url, oldestRequest) {
 		const headers = {
 			'Accept':		'application/json',
