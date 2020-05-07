@@ -3,9 +3,11 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/aevea/magefiles"
+	"github.com/go-git/go-git/v5"
 	"github.com/magefile/mage/mg"
 	"github.com/magefile/mage/sh"
 )
@@ -81,4 +83,52 @@ func PublishClient() error {
 	token := os.Getenv("GITHUB_TOKEN")
 
 	return sh.RunV("oto-tools", "publish-npm", "--token", token, "--registry", "github", "--owner", "aevea")
+}
+
+// VerifyGeneration makes sure that all files are generated and merged before merging to master.
+func VerifyGeneration() error {
+	err := Install()
+
+	if err != nil {
+		return err
+	}
+
+	build := Build{}
+
+	err = build.Server()
+
+	if err != nil {
+		return err
+	}
+
+	err = build.Client()
+
+	if err != nil {
+		return err
+	}
+
+	gitRepo, err := git.PlainOpen(".")
+
+	if err != nil {
+		return err
+	}
+
+	worktree, err := gitRepo.Worktree()
+
+	if err != nil {
+		return err
+	}
+
+	status, err := worktree.Status()
+
+	if err != nil {
+		return err
+	}
+
+	if !status.IsClean() {
+
+		return fmt.Errorf("git status is not clean: \n%s", status.String())
+	}
+
+	return nil
 }
