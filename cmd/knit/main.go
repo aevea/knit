@@ -6,10 +6,12 @@ import (
 	"fmt"
 	"os"
 	"sort"
+	"time"
 
 	"golang.org/x/oauth2"
 
 	"github.com/aevea/knit/internal/github"
+	"github.com/hako/durafmt"
 	"github.com/jedib0t/go-pretty/table"
 	"github.com/montanaflynn/stats"
 	"github.com/spf13/cobra"
@@ -66,7 +68,7 @@ func main() {
 			t.AppendRow(
 				table.Row{
 					"Longest open PR",
-					fmt.Sprintf("%.0f days", oldestPR.OpenFor.Hours()/24),
+					durafmt.Parse(oldestPR.OpenFor).LimitFirstN(2).String(),
 					oldestPR.URL,
 				},
 			)
@@ -98,10 +100,16 @@ func main() {
 				return err
 			}
 
+			meanDuration, err := time.ParseDuration(fmt.Sprintf("%.0fm", mean))
+
+			if err != nil {
+				return err
+			}
+
 			t.AppendRow(
 				table.Row{
 					fmt.Sprintf("Mean time to Merge (Last %d PRs)", len(durations)),
-					fmt.Sprintf("%.0f hours", mean/60),
+					durafmt.Parse(meanDuration).LimitFirstN(2).String(),
 				},
 			)
 
@@ -111,24 +119,42 @@ func main() {
 				return err
 			}
 
+			medianDuration, err := time.ParseDuration(fmt.Sprintf("%.0fm", median))
+
+			if err != nil {
+				return err
+			}
+
 			t.AppendRow(
 				table.Row{
 					fmt.Sprintf("Median time to Merge (Last %d PRs)", len(durations)),
-					fmt.Sprintf("%.0f hours", median/60),
+					durafmt.Parse(medianDuration).LimitFirstN(2).String(),
 				},
 			)
+
+			slowestMergeDuration, err := time.ParseDuration(fmt.Sprintf("%.0fm", durations[len(durations)-1]))
+
+			if err != nil {
+				return err
+			}
 
 			t.AppendRow(
 				table.Row{
 					fmt.Sprintf("Slowest time to Merge (Last %d PRs)", len(durations)),
-					fmt.Sprintf("%.0f hours", durations[len(durations)-1]/60),
+					durafmt.Parse(slowestMergeDuration).LimitFirstN(2).String(),
 				},
 			)
+
+			fastestMergeDuration, err := time.ParseDuration(fmt.Sprintf("%.0fm", durations[0]))
+
+			if err != nil {
+				return err
+			}
 
 			t.AppendRow(
 				table.Row{
 					fmt.Sprintf("Fastest time to Merge (Last %d PRs)", len(durations)),
-					fmt.Sprintf("%.2f minutes", durations[0]),
+					durafmt.Parse(fastestMergeDuration).LimitFirstN(2).String(),
 				},
 			)
 
@@ -138,10 +164,16 @@ func main() {
 				return err
 			}
 
+			mergedAfterReviewMedianDurations, err := time.ParseDuration(fmt.Sprintf("%.0fm", mergedAfterReviewMedian))
+
+			if err != nil {
+				return err
+			}
+
 			t.AppendRow(
 				table.Row{
 					fmt.Sprintf("Median time to Merge After approval (Last %d PRs)", len(durations)),
-					fmt.Sprintf("%.2f minutes", mergedAfterReviewMedian),
+					durafmt.Parse(mergedAfterReviewMedianDurations).LimitFirstN(2).String(),
 				},
 			)
 
