@@ -29,17 +29,37 @@ export class Healthcheck {
  
 export class PullRequestService {
 	
-	async oldest(url, oldestRequest) {
+	async averageByWeek(url, repositoryRequest) {
 		const headers = {
 			'Accept':		'application/json',
 			'Accept-Encoding':	'gzip',
 			'Content-Type':		'application/json',
 		}
-		oldestRequest = oldestRequest || {}
+		repositoryRequest = repositoryRequest || {}
+		const response = await fetch(`${url}/oto/PullRequestService.AverageByWeek`, {
+			method: 'POST',
+			headers: headers,
+			body: JSON.stringify(repositoryRequest)
+		})
+		return response.json().then((json) => {
+			if (json.error) {
+				throw new Error(json.error)
+			}
+			return json
+		})
+	}
+	
+	async oldest(url, repositoryRequest) {
+		const headers = {
+			'Accept':		'application/json',
+			'Accept-Encoding':	'gzip',
+			'Content-Type':		'application/json',
+		}
+		repositoryRequest = repositoryRequest || {}
 		const response = await fetch(`${url}/oto/PullRequestService.Oldest`, {
 			method: 'POST',
 			headers: headers,
-			body: JSON.stringify(oldestRequest)
+			body: JSON.stringify(repositoryRequest)
 		})
 		return response.json().then((json) => {
 			if (json.error) {
