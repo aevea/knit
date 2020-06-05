@@ -7,7 +7,7 @@ require (
 	github.com/aevea/oto-tools v0.2.0
 	github.com/go-git/go-git/v5 v5.0.0
 	github.com/go-openapi/strfmt v0.19.5 // indirect
-	github.com/hako/durafmt v0.0.0-20191009132224-3f39dc1ed9f4
+	github.com/hako/durafmt v0.0.0-20200605151348-3a43fc422dd9
 	github.com/jedib0t/go-pretty v4.3.0+incompatible
 	github.com/magefile/mage v1.9.0
 	github.com/mattn/go-runewidth v0.0.9 // indirect
