@@ -9,7 +9,7 @@ jobs:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v1
       - name: Commitsar check
-        uses: docker://aevea/commitsar
+        uses: docker://aevea/commitsar@sha256:fa4fd97f10b3ad4222d9f45cf0e9a4f28a3287118d97c38ea6b7355628b0fc88
   golangci-lint:
     name: runner / golangci-lint
     runs-on: ubuntu-latest
@@ -17,6 +17,6 @@ jobs:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v1
       - name: golangci-lint
-        uses: docker://reviewdog/action-golangci-lint
+        uses: docker://reviewdog/action-golangci-lint@sha256:9f8af9633d7a14d2100936693dc609249e13c29a352ce88fdc8a3d0aaadd8b26
         with:
           github_token: ${{ secrets.github_token }}
