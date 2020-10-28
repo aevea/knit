@@ -5,7 +5,7 @@ go 1.14
 require (
 	github.com/aevea/magefiles v0.0.0-20200424121010-0004d5a7a2fe
 	github.com/aevea/oto-tools v0.2.0
-	github.com/go-git/go-git/v5 v5.0.0
+	github.com/go-git/go-git/v5 v5.2.0
 	github.com/go-openapi/strfmt v0.19.5 // indirect
 	github.com/hako/durafmt v0.0.0-20191009132224-3f39dc1ed9f4
 	github.com/jedib0t/go-pretty v4.3.0+incompatible
