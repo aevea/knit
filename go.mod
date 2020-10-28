@@ -16,7 +16,7 @@ require (
 	github.com/pacedotdev/oto/otohttp v0.3.0
 	github.com/shurcooL/githubv4 v0.0.0-20200414012201-bbc966b061dd
 	github.com/shurcooL/graphql v0.0.0-20181231061246-d48a9a75455f // indirect
-	github.com/spf13/cobra v1.0.0
-	github.com/spf13/viper v1.4.0
-	golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be
+	github.com/spf13/cobra v1.1.1
+	github.com/spf13/viper v1.7.0
+	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
 )
