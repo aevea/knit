@@ -17,7 +17,7 @@ jobs:
         with:
           go-version: ${{ matrix.go-version }}
       - name: Check out code into the Go module directory
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Test
         run: |
           export PATH=${PATH}:`go env GOPATH`/bin
@@ -33,7 +33,7 @@ jobs:
         with:
           go-version: 1.14.x
       - name: Check out code into the Go module directory
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Tidy check
         run: |
           export PATH=${PATH}:`go env GOPATH`/bin
@@ -48,7 +48,7 @@ jobs:
         with:
           go-version: 1.14.x
       - name: Check out code into the Go module directory
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Tidy check
         run: |
           export PATH=${PATH}:`go env GOPATH`/bin
