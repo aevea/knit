@@ -14,7 +14,7 @@ require (
 	github.com/montanaflynn/stats v0.6.3
 	github.com/pacedotdev/oto v0.3.0
 	github.com/pacedotdev/oto/otohttp v0.3.0
-	github.com/shurcooL/githubv4 v0.0.0-20200414012201-bbc966b061dd
+	github.com/shurcooL/githubv4 v0.0.0-20201206200315-234843c633fa
 	github.com/shurcooL/graphql v0.0.0-20181231061246-d48a9a75455f // indirect
 	github.com/spf13/cobra v1.0.0
 	github.com/spf13/viper v1.4.0
