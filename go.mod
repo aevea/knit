@@ -9,7 +9,7 @@ require (
 	github.com/go-openapi/strfmt v0.19.5 // indirect
 	github.com/hako/durafmt v0.0.0-20191009132224-3f39dc1ed9f4
 	github.com/jedib0t/go-pretty v4.3.0+incompatible
-	github.com/magefile/mage v1.9.0
+	github.com/magefile/mage v1.11.0
 	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/montanaflynn/stats v0.6.3
 	github.com/pacedotdev/oto v0.3.0
